@@ -1,5 +1,7 @@
 module tt_um_rebot449_lingret_ALU
 (input wire clk,
+ input wire ena,
+ input wire rst_n,
 input [7:0] i_instruction, // ALU Instruction
 input [7:0] i_data_0, // Data input A
 input [7:0] i_data_1, // Data input B
