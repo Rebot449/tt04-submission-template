@@ -13,11 +13,40 @@ module tt_um_rebot449_lingret_ALU_Top(
     assign uio_oe = 8'b00000000;
 // set biderectional output to high impedance
     assign uio_out = 8'bzzzzzzzz;
+	
+tt_rebot449_simple_ALU inst
+(.i_instruction(ui_in),
+ .i_data(uio_in),
+ .o_result(uo_out));
+	
+endmodule
 
-reg [7:0] r_holder;
-always @(ui_in)
+module tt_rebot449_simple_ALU
+(input [7:0] i_instruction, // ALU Instruction
+input [7:0] i_data, // Data input
+output [7:0] o_result); // ALU Data Output
+
+reg [7:0] r_output;
+always @(i_instruction)
 begin
-	r_holder = ui_in + uio_in;
+    case(i_instruction)
+        8'bxxxxx000 :
+            r_output = i_data[7:4] | i_data[3:0];
+        8'bxxxxx001 :
+            r_output = ~(i_data[7:4] & i_data[3:0]);
+        8'bxxxxx010 :
+            r_output = ~(i_data[7:4] | i_data[3:0]);
+        8'bxxxxx011 :
+            r_output = (i_data[7:4] & i_data[3:0]);
+        8'bxxxxx100 :
+            r_output = i_data[7:4] + i_data[3:0];
+        8'bxxxxx101 :
+            r_output = i_data[3:0] - i_data[7:4];
+        default:
+            r_output = 8'b00000000;
+    endcase
 end
-assign uo_out = r_holder;
+
+assign o_result = r_output;
+
 endmodule
