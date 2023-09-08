@@ -11,8 +11,8 @@ module tt_um_rebot449_lingret_ALU_Top(
 
 // use bidirectionals as inputs
     assign uio_oe = 8'b00000000;
-// set biderectional output to high impedance;
-	assign uio_out = 8'zzzzzzzz;
+// set biderectional output to high impedance
+    assign uio_out = 8'bzzzzzzzz;
 
 reg [7:0] r_holder;
 always @(ui_in)
