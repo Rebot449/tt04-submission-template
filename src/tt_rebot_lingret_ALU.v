@@ -1,4 +1,4 @@
-module tt_rebot449_lingret_ALU
+module tt_um_rebot449_lingret_ALU
 (input i_instruction [7:0], // ALU Instruction
 input i_data_0 [7:0], // Data input A
 input i_data_1 [7:0] // Data input B
