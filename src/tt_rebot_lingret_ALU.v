@@ -1,8 +1,8 @@
 module tt_um_rebot449_lingret_ALU
-(input i_instruction [7:0], // ALU Instruction
-input i_data_0 [7:0], // Data input A
-input i_data_1 [7:0], // Data input B
-output o_result [7:0]); // ALU Data Output
+(input [7:0] i_instruction, // ALU Instruction
+input [7:0] i_data_0, // Data input A
+input [7:0] i_data_1, // Data input B
+output [7:0] o_result); // ALU Data Output
 
 reg [7:0] r_output;
 always @(i_instruction)
